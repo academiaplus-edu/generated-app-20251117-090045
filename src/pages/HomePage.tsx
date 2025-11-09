@@ -13,23 +13,23 @@ const fadeIn = {
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
 const testimonials = [
-  { 
-    name: 'Dr. Chiamaka Adebayo', 
-    role: 'Senior Lecturer, University of Lagos', 
-    text: 'AcademiaPlus transformed my manuscript. The editor assigned to my project had a deep understanding of social sciences in the Nigerian context, which was invaluable. My paper was accepted by a top journal on the first submission!', 
-    avatar: 'https://i.pravatar.cc/150?u=chiamaka' 
+  {
+    name: 'Dr. Chiamaka Adebayo',
+    role: 'Senior Lecturer, University of Lagos',
+    text: 'AcademiaPlus transformed my manuscript. The editor assigned to my project had a deep understanding of social sciences in the Nigerian context, which was invaluable. My paper was accepted by a top journal on the first submission!',
+    avatar: 'https://images.unsplash.com/photo-1610482102493-866d8b53c211?q=80&w=400&auto=format&fit=crop'
   },
-  { 
-    name: 'Oluwaseun Adekunle', 
-    role: 'PhD Candidate, University of Ibadan', 
-    text: 'As a PhD candidate, finishing my dissertation felt like a monumental task. The support I received was phenomenal, especially with structuring my literature review and methodology chapters. I passed my viva with flying colours.', 
-    avatar: 'https://i.pravatar.cc/150?u=oluwaseun' 
+  {
+    name: 'Oluwaseun Adekunle',
+    role: 'PhD Candidate, University of Ibadan',
+    text: 'As a PhD candidate, finishing my dissertation felt like a monumental task. The support I received was phenomenal, especially with structuring my literature review and methodology chapters. I passed my viva with flying colours.',
+    avatar: 'https://images.unsplash.com/photo-1609359458392-b9b167346551?q=80&w=400&auto=format&fit=crop'
   },
-  { 
-    name: 'Professor Fatima Bello', 
-    role: 'Researcher, Ahmadu Bello University', 
-    text: 'Their team’s professionalism and adherence to deadlines are commendable. They assisted with a grant proposal that was successfully funded. I highly recommend their services to any serious academic.', 
-    avatar: 'https://i.pravatar.cc/150?u=fatima' 
+  {
+    name: 'Professor Fatima Bello',
+    role: 'Researcher, Ahmadu Bello University',
+    text: 'Their team’s professionalism and adherence to deadlines are commendable. They assisted with a grant proposal that was successfully funded. I highly recommend their services to any serious academic.',
+    avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop'
   },
 ];
 export function HomePage() {
