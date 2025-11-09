@@ -20,9 +20,24 @@ const caseStudies = [
   },
 ];
 const testimonials = [
-  { name: 'Dr. Anya Sharma', role: 'Postdoctoral Researcher', text: 'AcademiaPlus was instrumental in getting my paper published in a top-tier journal. Their expert editor not only polished the language but also provided invaluable feedback on the structure.', avatar: 'https://i.pravatar.cc/150?u=anya' },
-  { name: 'Ben Carter', role: 'PhD Candidate', text: 'The dissertation editing service is phenomenal. They caught every error and helped me present my research with clarity and confidence. I couldn\'t have done it without them.', avatar: 'https://i.pravatar.cc/150?u=ben' },
-  { name: 'Dr. Kenji Tanaka', role: 'Medical Researcher', text: 'Their team helped me respond to reviewer comments effectively, which was the final push needed for acceptance. Highly professional and timely service.', avatar: 'https://i.pravatar.cc/150?u=kenji' },
+  { 
+    name: 'Dr. Chiamaka Adebayo', 
+    role: 'Senior Lecturer, University of Lagos', 
+    text: 'AcademiaPlus transformed my manuscript. The editor assigned to my project had a deep understanding of social sciences in the Nigerian context, which was invaluable. My paper was accepted by a top journal on the first submission!', 
+    avatar: 'https://i.pravatar.cc/150?u=chiamaka' 
+  },
+  { 
+    name: 'Oluwaseun Adekunle', 
+    role: 'PhD Candidate, University of Ibadan', 
+    text: 'As a PhD candidate, finishing my dissertation felt like a monumental task. The support I received was phenomenal, especially with structuring my literature review and methodology chapters. I passed my viva with flying colours.', 
+    avatar: 'https://i.pravatar.cc/150?u=oluwaseun' 
+  },
+  { 
+    name: 'Professor Fatima Bello', 
+    role: 'Researcher, Ahmadu Bello University', 
+    text: 'Their team’s professionalism and adherence to deadlines are commendable. They assisted with a grant proposal that was successfully funded. I highly recommend their services to any serious academic.', 
+    avatar: 'https://i.pravatar.cc/150?u=fatima' 
+  },
 ];
 const journals = ['Journal of Management', 'Admin Science Quarterly', 'American Sociological Review', 'Harvard Business Review', 'IEEE', 'Elsevier', 'Springer', 'PLOS ONE'];
 export function SuccessStoriesPage() {
