@@ -14,14 +14,14 @@ import { Mail, Phone, MapPin, Linkedin, Twitter } from 'lucide-react';
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email address.' }),
-  service: z.string({ required_error: 'Please select a service.' }),
+  service: z.string().min(1, { message: 'Please select a service.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 export function ContactPage() {
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: { name: '', email: '', message: '' },
+    defaultValues: { name: '', email: '', service: '', message: '' },
   });
   async function onSubmit(data: ContactFormValues) {
     const promise = api('/api/contact', {

@@ -41,3 +41,8 @@ export interface QuoteRequest {
   service: string;
   createdAt: string;
 }
+export interface NewsletterSubscription {
+  id: string;
+  email: string;
+  createdAt: string;
+}

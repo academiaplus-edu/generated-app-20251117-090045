@@ -1,4 +1,7 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,6 +9,9 @@ import { Link } from 'react-router-dom';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { toast } from 'sonner';
+import { api } from '@/lib/api-client';
 const blogPosts = [
   {
     title: '10 Common Reasons Manuscripts Get Rejected',
@@ -50,7 +56,29 @@ const blogPosts = [
     link: '#',
   },
 ];
+const newsletterSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+});
+type NewsletterFormValues = z.infer<typeof newsletterSchema>;
 export function BlogPage() {
+  const form = useForm<NewsletterFormValues>({
+    resolver: zodResolver(newsletterSchema),
+    defaultValues: { email: '' },
+  });
+  async function onSubmit(data: NewsletterFormValues) {
+    const promise = api('/api/subscribe', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    toast.promise(promise, {
+      loading: 'Subscribing...',
+      success: () => {
+        form.reset();
+        return 'Thank you for subscribing!';
+      },
+      error: 'Failed to subscribe. Please try again.',
+    });
+  }
   return (
     <MainLayout>
       <div className="bg-brand-light dark:bg-brand-blue">
@@ -94,10 +122,25 @@ export function BlogPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Stay Ahead of the Curve</h2>
           <p className="mt-4 text-muted-foreground">Get monthly writing tips & journal alerts delivered straight to your inbox.</p>
-          <form className="mt-8 flex max-w-md mx-auto gap-2">
-            <Input type="email" placeholder="Enter your email" className="flex-grow" />
-            <Button type="submit" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold">Subscribe</Button>
-          </form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 flex max-w-md mx-auto gap-2">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="flex-grow">
+                    <FormControl>
+                      <Input type="email" placeholder="Enter your email" className="flex-grow" {...field} />
+                    </FormControl>
+                    <FormMessage className="text-red-400 text-xs mt-1 text-left" />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? '...' : 'Subscribe'}
+              </Button>
+            </form>
+          </Form>
         </div>
       </section>
     </MainLayout>
