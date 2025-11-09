@@ -116,6 +116,29 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
       createdAt: new Date().toISOString(),
       requirements: body.requirements || "",
     });
+    // Simulate sending an email by logging to the console
+    console.log(`
+      ==================================================
+      [EMAIL NOTIFICATION] New Quote Request
+      ==================================================
+      To: academiaplus001@gmail.com
+      From: "${body.name}" <${body.email}>
+      Date: ${new Date().toUTCString()}
+      Subject: New Quote Request - ${body.documentType}
+      You have received a new quote request from your website:
+      --------------------------------------------------
+      Name: ${body.name}
+      Email: ${body.email}
+      Service: ${body.service}
+      Document Type: ${body.documentType}
+      Academic Level: ${body.academicLevel}
+      Subject Area: ${body.subjectArea}
+      Word Count: ${body.wordCount}
+      Deadline: ${body.deadline}
+      Requirements:
+      ${body.requirements || 'N/A'}
+      --------------------------------------------------
+    `);
     return ok(c, submission);
   });
   const newsletterSchema = z.object({
