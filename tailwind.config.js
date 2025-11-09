@@ -6,6 +6,7 @@ export default {
   	extend: {
   		fontFamily: {
   			sans: [
+  				'Lato',
   				'Inter',
   				'-apple-system',
   				'BlinkMacSystemFont',
@@ -13,6 +14,11 @@ export default {
   				'Roboto',
   				'sans-serif'
   			],
+        serif: [
+          'Merriweather',
+          'Georgia',
+          'serif'
+        ],
   			display: [
   				'Cal Sans',
   				'Inter',
@@ -91,6 +97,11 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+        brand: {
+          blue: '#0A2540',
+          gold: '#E5B84B',
+          light: '#F6F9FC',
+        },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			muted: {

@@ -1,148 +1,163 @@
-// Home page of the app, Currently a demo page for demonstration.
-// Please rewrite this file to implement your own logic. Do not replace or delete it, simply rewrite this HomePage.tsx file.
-import { useEffect } from 'react'
-import { Sparkles } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/ThemeToggle'
-import { Toaster, toast } from '@/components/ui/sonner'
-import { create } from 'zustand'
-import { useShallow } from 'zustand/react/shallow'
-import { AppLayout } from '@/components/layout/AppLayout'
-
-// Timer store: independent slice with a clear, minimal API, for demonstration
-type TimerState = {
-  isRunning: boolean;
-  elapsedMs: number;
-  start: () => void;
-  pause: () => void;
-  reset: () => void;
-  tick: (deltaMs: number) => void;
-}
-
-const useTimerStore = create<TimerState>((set) => ({
-  isRunning: false,
-  elapsedMs: 0,
-  start: () => set({ isRunning: true }),
-  pause: () => set({ isRunning: false }),
-  reset: () => set({ elapsedMs: 0, isRunning: false }),
-  tick: (deltaMs) => set((s) => ({ elapsedMs: s.elapsedMs + deltaMs })),
-}))
-
-// Counter store: separate slice to showcase multiple stores without coupling
-type CounterState = {
-  count: number;
-  inc: () => void;
-  reset: () => void;
-}
-
-const useCounterStore = create<CounterState>((set) => ({
-  count: 0,
-  inc: () => set((s) => ({ count: s.count + 1 })),
-  reset: () => set({ count: 0 }),
-}))
-
-function formatDuration(ms: number): string {
-  const total = Math.max(0, Math.floor(ms / 1000))
-  const m = Math.floor(total / 60)
-  const s = total % 60
-  return `${m}:${s.toString().padStart(2, '0')}`
-}
-
+import React from 'react';
+import { MainLayout } from '@/components/layout/MainLayout';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Link } from 'react-router-dom';
+import { Book, Edit3, Send, CheckCircle, Star, Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: 'easeOut' },
+};
 export function HomePage() {
-  // Select only what is needed to avoid unnecessary re-renders
-  const { isRunning, elapsedMs } = useTimerStore(
-    useShallow((s) => ({ isRunning: s.isRunning, elapsedMs: s.elapsedMs })),
-  )
-  const start = useTimerStore((s) => s.start)
-  const pause = useTimerStore((s) => s.pause)
-  const resetTimer = useTimerStore((s) => s.reset)
-  const count = useCounterStore((s) => s.count)
-  const inc = useCounterStore((s) => s.inc)
-  const resetCount = useCounterStore((s) => s.reset)
-
-  // Drive the timer only while running; avoid update-depth issues with a scoped RAF
-  useEffect(() => {
-    if (!isRunning) return
-    let raf = 0
-    let last = performance.now()
-    const loop = () => {
-      const now = performance.now()
-      const delta = now - last
-      last = now
-      // Read store API directly to keep effect deps minimal and stable
-      useTimerStore.getState().tick(delta)
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(raf)
-  }, [isRunning])
-
-  const onPleaseWait = () => {
-    inc()
-    if (!isRunning) {
-      start()
-      toast.success('Building your app…', {
-        description: 'Hang tight, we\'re setting everything up.',
-      })
-    } else {
-      pause()
-      toast.info('Taking a short pause', {
-        description: 'We\'ll continue shortly.',
-      })
-    }
-  }
-
-  const formatted = formatDuration(elapsedMs)
-
   return (
-    <AppLayout>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-4 overflow-hidden relative">
-        <ThemeToggle />
-        <div className="absolute inset-0 bg-gradient-rainbow opacity-10 dark:opacity-20 pointer-events-none" />
-        <div className="text-center space-y-8 relative z-10 animate-fade-in">
-          <div className="flex justify-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-primary flex items-center justify-center shadow-primary floating">
-              <Sparkles className="w-8 h-8 text-white rotating" />
-            </div>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-balance leading-tight">
-            Creating your <span className="text-gradient">app</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto text-pretty">
-            Your application would be ready soon.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Button 
-              size="lg"
-              onClick={onPleaseWait}
-              className="btn-gradient px-8 py-4 text-lg font-semibold hover:-translate-y-0.5 transition-all duration-200"
-              aria-live="polite"
-            >
-              Please Wait
+    <MainLayout>
+      {/* Hero Section */}
+      <section className="bg-brand-light dark:bg-brand-blue py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1 {...fadeIn} className="text-4xl md:text-6xl font-extrabold font-serif text-brand-blue dark:text-white leading-tight">
+            From Draft to Publication – <br /> We’re With You Every Step of the Way.
+          </motion.h1>
+          <motion.p {...fadeIn} transition={{ delay: 0.2 }} className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+            Elevating Academic Excellence Through Expert Writing & Publishing Support.
+          </motion.p>
+          <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="mt-10 flex justify-center gap-4">
+            <Button asChild size="lg" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-8 py-6">
+              <Link to="/quote">Get a Free Quote</Link>
             </Button>
-          </div>
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-            <div>
-              Time elapsed: <span className="font-medium tabular-nums text-foreground">{formatted}</span>
-            </div>
-            <div>
-              Coins: <span className="font-medium tabular-nums text-foreground">{count}</span>
-            </div>
-          </div>
-          <div className="flex justify-center gap-2">
-            <Button variant="outline" size="sm" onClick={() => { resetTimer(); resetCount(); toast('Reset complete') }}>
-              Reset
+            <Button asChild size="lg" variant="outline" className="text-base px-8 py-6">
+              <Link to="/services">Explore Services</Link>
             </Button>
-            <Button variant="outline" size="sm" onClick={() => { inc(); toast('Coin added') }}>
-              Add Coin
-            </Button>
+          </motion.div>
+        </div>
+      </section>
+      {/* Key Services Snapshot */}
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Our Core Services</h2>
+            <p className="mt-4 text-muted-foreground">Comprehensive support for your academic journey.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div {...fadeIn}>
+              <Card className="text-center h-full">
+                <CardHeader>
+                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
+                    <Book className="h-8 w-8 text-brand-gold" />
+                  </div>
+                  <CardTitle className="mt-4 font-serif">Research Paper Writing</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Expert assistance in crafting original articles, reviews, and case studies that meet the highest academic standards.</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
+              <Card className="text-center h-full">
+                <CardHeader>
+                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
+                    <Edit3 className="h-8 w-8 text-brand-gold" />
+                  </div>
+                  <CardTitle className="mt-4 font-serif">Thesis & Dissertation Editing</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Meticulous editing for clarity, structure, and formatting, from proposal to final submission.</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.4 }}>
+              <Card className="text-center h-full">
+                <CardHeader>
+                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
+                    <Send className="h-8 w-8 text-brand-gold" />
+                  </div>
+                  <CardTitle className="mt-4 font-serif">Journal Submission Support</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Strategic guidance on journal selection, manuscript formatting, and navigating the submission process.</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
-        <footer className="absolute bottom-8 text-center text-muted-foreground/80">
-          <p>Powered by Cloudflare</p>
-        </footer>
-        <Toaster richColors closeButton />
-      </div>
-    </AppLayout>
-  )
+      </section>
+      {/* Why Choose Us? */}
+      <section className="py-16 md:py-24 bg-brand-light dark:bg-brand-blue">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Why Choose AcademiaPlus?</h2>
+            <p className="mt-4 text-muted-foreground">Your trusted partner for academic success.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              "PhD-Level Subject Experts",
+              "100% Confidential & Plagiarism-Free",
+              "On-Time Delivery Guaranteed",
+              "Published in Q1 Journals",
+            ].map((item, index) => (
+              <motion.div key={item} {...fadeIn} transition={{ delay: index * 0.1 }}>
+                <div className="flex items-start space-x-4">
+                  <CheckCircle className="h-6 w-6 text-brand-gold mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg text-brand-blue dark:text-white">{item}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Client Testimonials */}
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">What Our Clients Say</h2>
+          </div>
+          <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
+            <CarouselContent>
+              {[
+                { name: 'Dr. Anya Sharma', role: 'Postdoctoral Researcher', text: 'AcademiaPlus was instrumental in getting my paper published in a top-tier journal. Their expert editor not only polished the language but also provided invaluable feedback on the structure.' },
+                { name: 'Ben Carter', role: 'PhD Candidate', text: 'The dissertation editing service is phenomenal. They caught every error and helped me present my research with clarity and confidence. I couldn\'t have done it without them.' },
+                { name: 'Dr. Kenji Tanaka', role: 'Medical Researcher', text: 'Their team helped me respond to reviewer comments effectively, which was the final push needed for acceptance. Highly professional and timely service.' },
+              ].map((testimonial, index) => (
+                <CarouselItem key={index}>
+                  <Card className="border-none shadow-none">
+                    <CardContent className="text-center p-8">
+                      <Quote className="h-8 w-8 text-brand-gold/50 mx-auto mb-4" />
+                      <p className="text-lg italic text-muted-foreground">"{testimonial.text}"</p>
+                      <div className="mt-6 flex items-center justify-center space-x-3">
+                        <Avatar>
+                          <AvatarImage src={`https://i.pravatar.cc/150?u=${testimonial.name}`} />
+                          <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold text-brand-blue dark:text-white">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+      {/* Final CTA */}
+      <section className="py-20 md:py-32 bg-brand-blue text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif">Ready to Publish with Confidence?</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-gray-300">Let our experts help you achieve your academic goals. Get a personalized quote today.</p>
+          <Button asChild size="lg" className="mt-8 bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-8 py-6">
+            <Link to="/quote">Start Today</Link>
+          </Button>
+        </div>
+      </section>
+    </MainLayout>
+  );
 }
