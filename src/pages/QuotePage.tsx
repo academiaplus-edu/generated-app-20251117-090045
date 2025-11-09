@@ -19,10 +19,9 @@ const quoteFormSchema = z.object({
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
   wordCount: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.coerce.number({ 
-      required_error: "Word count is required.",
-      invalid_type_error: "Word count must be a number." 
-    }).min(1, { message: "Word count must be at least 1." })
+    z.coerce.number({
+      invalid_type_error: "Word count must be a number."
+    }).min(1, { message: "Word count is required and must be at least 1." })
   ),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
@@ -145,7 +144,7 @@ export function QuotePage() {
                             type="number"
                             placeholder="e.g., 8000"
                             {...field}
-                            onChange={event => field.onChange(+event.target.value)}
+                            onChange={event => field.onChange(event.target.value === '' ? undefined : +event.target.value)}
                             value={field.value ?? ''}
                           />
                         </FormControl>
