@@ -11,12 +11,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { toast } from 'sonner';
 import { api } from '@/lib/api-client';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
-  if (issue.code === z.ZodIssueCode.invalid_type && issue.expected === 'number') {
-    return { message: 'Word count must be a number.' };
-  }
-  return { message: ctx.defaultError };
-};
 const quoteFormSchema = z.object({
   name: z.string().min(2, { message: 'Name is required.' }),
   email: z.string().email({ message: 'A valid email is required.' }),
@@ -25,7 +19,10 @@ const quoteFormSchema = z.object({
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
   wordCount: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.coerce.number({ errorMap: customErrorMap }).min(1, { message: "Word count must be at least 1." })
+    z.coerce.number({ 
+      required_error: "Word count is required.",
+      invalid_type_error: "Word count must be a number." 
+    }).min(1, { message: "Word count must be at least 1." })
   ),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
@@ -148,6 +145,7 @@ export function QuotePage() {
                             type="number"
                             placeholder="e.g., 8000"
                             {...field}
+                            onChange={event => field.onChange(+event.target.value)}
                             value={field.value ?? ''}
                           />
                         </FormControl>
