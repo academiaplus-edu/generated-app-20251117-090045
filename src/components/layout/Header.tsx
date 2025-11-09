@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/success-stories', label: 'Success Stories' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
+  { href: '/faq', label: 'FAQ' },
 ];
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
