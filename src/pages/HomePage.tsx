@@ -12,6 +12,26 @@ const fadeIn = {
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6, ease: "easeOut" as const },
 };
+const testimonials = [
+  { 
+    name: 'Dr. Chiamaka Adebayo', 
+    role: 'Senior Lecturer, University of Lagos', 
+    text: 'AcademiaPlus transformed my manuscript. The editor assigned to my project had a deep understanding of social sciences in the Nigerian context, which was invaluable. My paper was accepted by a top journal on the first submission!', 
+    avatar: 'https://i.pravatar.cc/150?u=chiamaka' 
+  },
+  { 
+    name: 'Oluwaseun Adekunle', 
+    role: 'PhD Candidate, University of Ibadan', 
+    text: 'As a PhD candidate, finishing my dissertation felt like a monumental task. The support I received was phenomenal, especially with structuring my literature review and methodology chapters. I passed my viva with flying colours.', 
+    avatar: 'https://i.pravatar.cc/150?u=oluwaseun' 
+  },
+  { 
+    name: 'Professor Fatima Bello', 
+    role: 'Researcher, Ahmadu Bello University', 
+    text: 'Their team’s professionalism and adherence to deadlines are commendable. They assisted with a grant proposal that was successfully funded. I highly recommend their services to any serious academic.', 
+    avatar: 'https://i.pravatar.cc/150?u=fatima' 
+  },
+];
 export function HomePage() {
   return (
     <MainLayout>
@@ -118,11 +138,7 @@ export function HomePage() {
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
-              {[
-                { name: 'Dr. Anya Sharma', role: 'Postdoctoral Researcher', text: 'AcademiaPlus was instrumental in getting my paper published in a top-tier journal. Their expert editor not only polished the language but also provided invaluable feedback on the structure.' },
-                { name: 'Ben Carter', role: 'PhD Candidate', text: 'The dissertation editing service is phenomenal. They caught every error and helped me present my research with clarity and confidence. I couldn\'t have done it without them.' },
-                { name: 'Dr. Kenji Tanaka', role: 'Medical Researcher', text: 'Their team helped me respond to reviewer comments effectively, which was the final push needed for acceptance. Highly professional and timely service.' },
-              ].map((testimonial, index) => (
+              {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
                   <Card className="border-none shadow-none">
                     <CardContent className="text-center p-8">
@@ -130,7 +146,7 @@ export function HomePage() {
                       <p className="text-lg italic text-muted-foreground">"{testimonial.text}"</p>
                       <div className="mt-6 flex items-center justify-center space-x-3">
                         <Avatar>
-                          <AvatarImage src={`https://i.pravatar.cc/150?u=${testimonial.name}`} />
+                          <AvatarImage src={testimonial.avatar} />
                           <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         <div>
