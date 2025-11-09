@@ -5,12 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Link } from 'react-router-dom';
-import { Book, Edit3, Send, CheckCircle, Star, Quote } from 'lucide-react';
+import { Book, Edit3, Send, CheckCircle, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' },
+  transition: { duration: 0.6, ease: "easeOut" as const },
 };
 export function HomePage() {
   return (
