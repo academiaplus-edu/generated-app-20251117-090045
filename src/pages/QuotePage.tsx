@@ -17,7 +17,7 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number({ required_error: "Word count is required.", invalid_type_error: "Word count must be a number." }).positive({ message: "Word count must be a positive number." }),
+  wordCount: z.coerce.number({ errorMap: () => ({ message: "Word count must be a number." }) }).positive({ message: "Word count must be a positive number." }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
