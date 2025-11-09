@@ -77,6 +77,24 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
     });
+    // Simulate sending an email by logging to the console
+    console.log(`
+      ==================================================
+      [EMAIL NOTIFICATION] New Contact Form Submission
+      ==================================================
+      To: academiaplus001@gmail.com
+      From: "${body.name}" <${body.email}>
+      Date: ${new Date().toUTCString()}
+      Subject: New Inquiry - ${body.service}
+      You have received a new message from your website contact form:
+      --------------------------------------------------
+      Name: ${body.name}
+      Email: ${body.email}
+      Service Needed: ${body.service}
+      Message:
+      ${body.message}
+      --------------------------------------------------
+    `);
     return ok(c, submission);
   });
   const quoteSchema = z.object({

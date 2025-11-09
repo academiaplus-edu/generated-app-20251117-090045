@@ -24,7 +24,7 @@ const quoteFormSchema = z.object({
 });
 type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 export function QuotePage() {
-  const form = useForm({
+  const form = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
       name: '',
@@ -38,7 +38,7 @@ export function QuotePage() {
       service: '',
     }
   });
-  async function onSubmit(data) {
+  async function onSubmit(data: QuoteFormValues) {
     const promise = api('/api/quote', {
       method: 'POST',
       body: JSON.stringify(data),
