@@ -19,9 +19,7 @@ const quoteFormSchema = z.object({
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
   wordCount: z.preprocess(
     (val) => (val === "" ? undefined : val),
-    z.coerce.number({
-      invalid_type_error: "Word count must be a number."
-    }).min(1, { message: "Word count is required and must be at least 1." })
+    z.coerce.number().min(1, { message: "Word count is required and must be at least 1." })
   ),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
