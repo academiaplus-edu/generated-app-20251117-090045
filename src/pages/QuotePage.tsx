@@ -17,14 +17,14 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number().positive({ message: "Word count must be a positive number." }),
+  wordCount: z.coerce.number().positive({ message: 'Word count must be a positive number.' }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
 });
 type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 export function QuotePage() {
-  const form = useForm<QuoteFormValues>({
+  const form = useForm({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
       name: '',
@@ -38,7 +38,7 @@ export function QuotePage() {
       service: '',
     }
   });
-  async function onSubmit(data: QuoteFormValues) {
+  async function onSubmit(data) {
     const promise = api('/api/quote', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -132,7 +132,22 @@ export function QuotePage() {
                   )} />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <FormField control={form.control} name="wordCount" render={({ field }) => (
-                      <FormItem><FormLabel>Word Count</FormLabel><FormControl><Input type="number" placeholder="e.g., 8000" {...field} onChange={event => field.onChange(+event.target.value)} /></FormControl><FormMessage /></FormItem>
+                      <FormItem>
+                        <FormLabel>Word Count</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            placeholder="e.g., 8000"
+                            {...field}
+                            onChange={event => {
+                              const value = event.target.value;
+                              field.onChange(value === '' ? undefined : parseInt(value, 10));
+                            }}
+                            value={String(field.value ?? '')}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     )} />
                     <FormField control={form.control} name="deadline" render={({ field }) => (
                       <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} min={new Date().toISOString().split("T")[0]} /></FormControl><FormMessage /></FormItem>
