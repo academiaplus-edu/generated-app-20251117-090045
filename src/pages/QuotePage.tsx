@@ -17,7 +17,7 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.string().min(1, { message: "Word count is required." }).pipe(z.coerce.number().positive({ message: "Word count must be positive." })),
+  wordCount: z.coerce.number({ required_error: "Word count is required.", invalid_type_error: "Word count must be a number." }).positive({ message: "Word count must be a positive number." }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
@@ -32,7 +32,7 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
-      wordCount: '' as any, // Use empty string and cast to satisfy initial type
+      wordCount: undefined,
       deadline: '',
       requirements: '',
       service: '',
@@ -132,7 +132,7 @@ export function QuotePage() {
                   )} />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <FormField control={form.control} name="wordCount" render={({ field }) => (
-                      <FormItem><FormLabel>Word Count</FormLabel><FormControl><Input type="number" placeholder="e.g., 8000" {...field} /></FormControl><FormMessage /></FormItem>
+                      <FormItem><FormLabel>Word Count</FormLabel><FormControl><Input type="number" placeholder="e.g., 8000" {...field} onChange={event => field.onChange(+event.target.value)} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="deadline" render={({ field }) => (
                       <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} min={new Date().toISOString().split("T")[0]} /></FormControl><FormMessage /></FormItem>
