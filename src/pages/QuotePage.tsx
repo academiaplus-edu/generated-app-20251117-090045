@@ -17,7 +17,7 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number({ invalid_type_error: 'Please enter a valid number.' }).positive({ message: 'Word count must be positive.' }),
+  wordCount: z.string().min(1, { message: "Word count is required." }).pipe(z.coerce.number().positive({ message: "Word count must be positive." })),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
@@ -32,7 +32,7 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
-      wordCount: undefined,
+      wordCount: '' as any, // Use empty string and cast to satisfy initial type
       deadline: '',
       requirements: '',
       service: '',
@@ -119,12 +119,12 @@ export function QuotePage() {
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl><SelectTrigger><SelectValue placeholder="Select subject area" /></SelectTrigger></FormControl>
                         <SelectContent>
-                          <SelectItem value="Medicine & Health Sciences">Medicine & Health Sciences</SelectItem>
-                          <SelectItem value="Engineering & Technology">Engineering & Technology</SelectItem>
-                          <SelectItem value="Social Sciences & Humanities">Social Sciences & Humanities</SelectItem>
-                          <SelectItem value="Life Sciences">Life Sciences</SelectItem>
-                          <SelectItem value="Physical Sciences">Physical Sciences</SelectItem>
-                          <SelectItem value="Business & Economics">Business & Economics</SelectItem>
+                          <SelectItem value="Management & Business Studies">Management & Business Studies</SelectItem>
+                          <SelectItem value="Sociology & Political Science">Sociology & Political Science</SelectItem>
+                          <SelectItem value="Psychology & Education">Psychology & Education</SelectItem>
+                          <SelectItem value="Economics & Finance">Economics & Finance</SelectItem>
+                          <SelectItem value="Public Policy & Administration">Public Policy & Administration</SelectItem>
+                          <SelectItem value="Other Social Sciences">Other Social Sciences</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

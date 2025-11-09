@@ -7,16 +7,16 @@ import { Quote, CheckCircle, BookCheck } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const caseStudies = [
   {
-    title: 'From Rejection to Nature Communications',
-    challenge: 'A biomedical researcher faced repeated rejections due to unclear presentation and narrative flow, despite strong data.',
-    solution: 'Our expert editor restructured the manuscript, clarified complex methodologies, and crafted a compelling narrative. We also assisted in writing a persuasive rebuttal letter to reviewers.',
-    result: 'The revised paper was accepted in Nature Communications, a high-impact journal.',
+    title: 'From Rejection to a Top Management Journal',
+    challenge: 'A business school researcher faced rejection for a promising study due to a weak theoretical framework and unclear contributions.',
+    solution: 'Our expert consultant helped refine the research questions, strengthen the theoretical framework, and clearly articulate the study\'s contribution to management literature.',
+    result: 'The revised paper was accepted in a prestigious Q1 management journal.',
   },
   {
-    title: 'PhD Dissertation Completed in 8 Weeks',
-    challenge: 'A PhD student was struggling to structure her 80,000-word dissertation and meet a tight deadline.',
-    solution: 'We assigned a subject-matter expert who provided chapter-by-chapter feedback on structure, argumentation, and academic language, ensuring a cohesive and polished final draft.',
-    result: 'The student successfully submitted her dissertation on time and passed her viva with minor corrections.',
+    title: 'PhD Dissertation in Sociology Completed Ahead of Schedule',
+    challenge: 'A PhD candidate was struggling to synthesize a large volume of qualitative data for their sociology dissertation.',
+    solution: 'We assigned a qualitative research specialist who provided guidance on thematic analysis and narrative construction, helping to shape a coherent and impactful dissertation.',
+    result: 'The student successfully defended their dissertation with distinction, finishing a month ahead of schedule.',
   },
 ];
 const testimonials = [
@@ -24,7 +24,7 @@ const testimonials = [
   { name: 'Ben Carter', role: 'PhD Candidate', text: 'The dissertation editing service is phenomenal. They caught every error and helped me present my research with clarity and confidence. I couldn\'t have done it without them.', avatar: 'https://i.pravatar.cc/150?u=ben' },
   { name: 'Dr. Kenji Tanaka', role: 'Medical Researcher', text: 'Their team helped me respond to reviewer comments effectively, which was the final push needed for acceptance. Highly professional and timely service.', avatar: 'https://i.pravatar.cc/150?u=kenji' },
 ];
-const journals = ['Nature', 'Science', 'The Lancet', 'Cell', 'IEEE', 'Elsevier', 'Springer', 'PLOS ONE'];
+const journals = ['Journal of Management', 'Admin Science Quarterly', 'American Sociological Review', 'Harvard Business Review', 'IEEE', 'Elsevier', 'Springer', 'PLOS ONE'];
 export function SuccessStoriesPage() {
   return (
     <MainLayout>
