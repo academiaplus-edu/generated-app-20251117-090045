@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ShieldCheck, Star, Users, Handshake } from 'lucide-react';
 const teamMembers = [
-  { name: 'Dr. Evelyn Reed', role: 'Founder & Lead Editor, PhD', avatar: 'https://i.pravatar.cc/150?u=evelyn', bio: 'A published author in cell biology with over 15 years of experience in academic editing and mentoring.' },
-  { name: 'Dr. Samuel Chen', role: 'Senior Editor, Engineering, PhD', avatar: 'https://i.pravatar.cc/150?u=samuel', bio: 'Specializes in engineering and computer science manuscripts, with a focus on IEEE and ACM standards.' },
-  { name: 'Dr. Isabella Rossi', role: 'Humanities Specialist, PhD', avatar: 'https://i.pravatar.cc/150?u=isabella', bio: 'Expert in social sciences and humanities, ensuring arguments are coherent, compelling, and well-structured.' },
+  { name: 'ALLI, Noah Gbenga', role: 'Founder & Lead Consultant, PhD', avatar: 'https://i.pravatar.cc/150?u=noah', bio: 'A published author in management and social sciences with over 15 years of experience in academic consulting.' },
+  { name: 'Dr. Samuel Chen', role: 'Senior Editor, Quantitative Social Science', avatar: 'https://i.pravatar.cc/150?u=samuel', bio: 'Specializes in quantitative research manuscripts, with a focus on statistical analysis and data presentation.' },
+  { name: 'Dr. Isabella Rossi', role: 'Qualitative Research Specialist, PhD', avatar: 'https://i.pravatar.cc/150?u=isabella', bio: 'Expert in qualitative methodologies, ensuring arguments are coherent, compelling, and well-structured.' },
 ];
 const coreValues = [
   { title: 'Integrity', icon: ShieldCheck, description: 'We uphold the highest ethical standards, ensuring all work is original and properly attributed.' },
@@ -32,7 +32,7 @@ export function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold font-serif text-brand-blue dark:text-white">Our Story</h2>
               <p className="mt-4 text-muted-foreground">
-                AcademiaPlus was born from a simple observation: brilliant researchers often struggle not with their ideas, but with the specific conventions of academic writing and publishing. After years of peer-reviewing and mentoring junior colleagues, our founder, Dr. Evelyn Reed, saw a need for a service that was both expert-driven and empathetic to the scholar's journey.
+                AcademiaPlus was born from a simple observation: brilliant researchers often struggle not with their ideas, but with the specific conventions of academic writing and publishing. After years of peer-reviewing and mentoring junior colleagues, our founder, ALLI, Noah Gbenga, saw a need for a service that was both expert-driven and empathetic to the scholar's journey in management and social sciences.
               </p>
               <p className="mt-4 text-muted-foreground">
                 We assembled a team of PhD-level experts from diverse fields, all united by a passion for clear, impactful scholarly communication. Today, we are a trusted partner for academics worldwide.

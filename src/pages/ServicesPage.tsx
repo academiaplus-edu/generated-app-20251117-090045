@@ -9,10 +9,10 @@ const services = {
     title: 'Academic Writing',
     icon: PenSquare,
     items: [
-      { title: 'Research Papers', description: 'Original articles, systematic reviews, and meta-analyses.', for: 'Researchers, Postdocs' },
-      { title: 'Theses & Dissertations', description: 'Comprehensive support from proposal to final draft.', for: 'PhD & Master’s Candidates' },
-      { title: 'Case Studies & Lab Reports', description: 'Detailed and structured reporting of findings.', for: 'Students, Medical Professionals' },
-      { title: 'Personal Statements & SOPs', description: 'Crafting compelling narratives for applications.', for: 'Applicants for Grad School' },
+      { title: 'Research Papers', description: 'Original articles, reviews, and analyses in management, social sciences, and more.', for: 'Researchers, Postdocs' },
+      { title: 'Theses & Dissertations', description: 'Comprehensive support from proposal to final draft, with a focus on social science methodologies.', for: 'PhD & Master’s Candidates' },
+      { title: 'Case Studies & Reports', description: 'Detailed and structured reporting for business and social science findings.', for: 'Students, Professionals' },
+      { title: 'Personal Statements & SOPs', description: 'Crafting compelling narratives for graduate school applications.', for: 'Applicants for Grad School' },
     ],
   },
   editing: {
@@ -29,7 +29,7 @@ const services = {
     title: 'Publishing Support',
     icon: BookUp,
     items: [
-      { title: 'Journal Selection Strategy', description: 'Identifying suitable, high-impact journals.', for: 'Early-career Researchers' },
+      { title: 'Journal Selection Strategy', description: 'Identifying suitable, high-impact journals for your field.', for: 'Early-career Researchers' },
       { title: 'Manuscript Submission', description: 'Navigating submission portals and requirements.', for: 'First-time Authors' },
       { title: 'Response to Reviewers', description: 'Crafting persuasive rebuttals and revisions.', for: 'Authors undergoing peer review' },
       { title: 'Copyright & Licensing', description: 'Guidance on author rights and open access.', for: 'All Published Authors' },
@@ -39,7 +39,7 @@ const services = {
     title: 'Additional Services',
     icon: GraduationCap,
     items: [
-      { title: 'Grant & Proposal Writing', description: 'Developing strong proposals for funding.', for: 'Principal Investigators, NGOs' },
+      { title: 'Grant & Proposal Writing', description: 'Developing strong proposals for research funding.', for: 'Principal Investigators, NGOs' },
       { title: 'Conference Materials', description: 'Abstracts, posters, and presentations.', for: 'Academic Presenters' },
       { title: 'Book Chapters & Monographs', description: 'Support for long-form academic works.', for: 'Established Academics' },
       { title: 'Translation + Editing', description: 'High-quality translation with academic polish.', for: 'International Scholars' },
