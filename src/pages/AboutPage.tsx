@@ -6,7 +6,7 @@ import { ShieldCheck, Star, Users, Handshake } from 'lucide-react';
 const teamMembers = [
   { name: 'ALLI, Noah Gbenga', role: 'Founder & Lead Consultant', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=17Xa28AAAAAJ&citpid=6', bio: 'A published author in management and social sciences with over 15 years of experience in academic consulting.' },
   { name: 'Ganiyu Kamal (PhD in view)', role: 'Senior Editor, Quantitative Social Science', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=Hd-yoe4AAAAJ&citpid=2', bio: 'Specializes in quantitative research manuscripts, with a focus on statistical analysis and data presentation.' },
-  { name: 'Aina John (PhD in view)', role: 'Qualitative Research Specialist', avatar: 'https://i.pravatar.cc/150?u=young-nigerian-male-1', bio: 'Expert in qualitative methodologies, ensuring arguments are coherent, compelling, and well-structured.' },
+  { name: 'Aina John (PhD in view)', role: 'Qualitative Research Specialist', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=6raPVkUAAAAJ&citpid=1', bio: 'Expert in qualitative methodologies, ensuring arguments are coherent, compelling, and well-structured.' },
   { name: 'Adegboye Liadi', role: 'Publication Support Manager', avatar: 'https://i.pravatar.cc/150?u=young-nigerian-male-2', bio: 'Manages journal submissions and reviewer communications, ensuring a smooth path to publication.' },
 ];
 const coreValues = [
