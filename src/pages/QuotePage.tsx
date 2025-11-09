@@ -17,7 +17,7 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number({ required_error: "Word count is required." }).min(1, { message: "Word count must be at least 1." }),
+  wordCount: z.coerce.number().min(1, { message: 'Word count is required and must be at least 1.' }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
@@ -139,7 +139,6 @@ export function QuotePage() {
                             type="number"
                             placeholder="e.g., 8000"
                             {...field}
-                            value={field.value ?? ''}
                           />
                         </FormControl>
                         <FormMessage />
