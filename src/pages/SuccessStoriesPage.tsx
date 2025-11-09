@@ -36,7 +36,6 @@ const testimonials = [
     name: 'Professor Fatima Bello',
     role: 'Researcher, Ahmadu Bello University',
     text: 'Their team’s professionalism and adherence to deadlines are commendable. They assisted with a grant proposal that was successfully funded. I highly recommend their services to any serious academic.',
-    avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop'
   },
 ];
 const journals = ['Journal of Management', 'Admin Science Quarterly', 'American Sociological Review', 'Harvard Business Review', 'IEEE', 'Elsevier', 'Springer', 'PLOS ONE'];
@@ -91,7 +90,7 @@ export function SuccessStoriesPage() {
                   <div className="mt-6 flex items-center space-x-3">
                     <Avatar>
                       <AvatarImage src={t.avatar} />
-                      <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
+                      <AvatarFallback>{t.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                     </Avatar>
                     <div>
                       <p className="font-semibold text-brand-blue dark:text-white">{t.name}</p>
