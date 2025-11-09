@@ -2,7 +2,7 @@
  * Minimal real-world demo: One Durable Object instance per entity (User, ChatBoard), with Indexes for listing.
  */
 import { IndexedEntity } from "./core-utils";
-import type { User, Chat, ChatMessage, ContactSubmission, QuoteRequest } from "@shared/types";
+import type { User, Chat, ChatMessage, ContactSubmission, QuoteRequest, NewsletterSubscription } from "@shared/types";
 import { MOCK_CHAT_MESSAGES, MOCK_CHATS, MOCK_USERS } from "@shared/mock-data";
 // USER ENTITY: one DO instance per user
 export class UserEntity extends IndexedEntity<User> {
@@ -60,6 +60,16 @@ export class QuoteRequestEntity extends IndexedEntity<QuoteRequest> {
     deadline: "",
     requirements: "",
     service: "",
+    createdAt: "",
+  };
+}
+// NEWSLETTER SUBSCRIPTION ENTITY
+export class NewsletterSubscriptionEntity extends IndexedEntity<NewsletterSubscription> {
+  static readonly entityName = "newsletterSubscription";
+  static readonly indexName = "newsletterSubscriptions";
+  static readonly initialState: NewsletterSubscription = {
+    id: "",
+    email: "",
     createdAt: "",
   };
 }

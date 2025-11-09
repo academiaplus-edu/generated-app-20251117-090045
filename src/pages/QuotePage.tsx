@@ -14,18 +14,29 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 const quoteFormSchema = z.object({
   name: z.string().min(2, { message: 'Name is required.' }),
   email: z.string().email({ message: 'A valid email is required.' }),
-  documentType: z.string({ required_error: 'Please select a document type.' }),
-  academicLevel: z.string({ required_error: 'Please select an academic level.' }),
-  subjectArea: z.string({ required_error: 'Please select a subject area.' }),
-  wordCount: z.coerce.number().int().positive({ message: 'Please enter a valid word count.' }),
+  documentType: z.string().min(1, { message: 'Please select a document type.' }),
+  academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
+  subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
+  wordCount: z.coerce.number({ invalid_type_error: 'Please enter a valid number.' }).positive({ message: 'Word count must be positive.' }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
-  service: z.string({ required_error: 'Please select a preferred service.' }),
+  service: z.string().min(1, { message: 'Please select a preferred service.' }),
 });
 type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 export function QuotePage() {
   const form = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      documentType: '',
+      academicLevel: '',
+      subjectArea: '',
+      wordCount: undefined,
+      deadline: '',
+      requirements: '',
+      service: '',
+    }
   });
   async function onSubmit(data: QuoteFormValues) {
     const promise = api('/api/quote', {
@@ -124,7 +135,7 @@ export function QuotePage() {
                       <FormItem><FormLabel>Word Count</FormLabel><FormControl><Input type="number" placeholder="e.g., 8000" {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
                     <FormField control={form.control} name="deadline" render={({ field }) => (
-                      <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
+                      <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} min={new Date().toISOString().split("T")[0]} /></FormControl><FormMessage /></FormItem>
                     )} />
                   </div>
                   <FormField control={form.control} name="service" render={({ field }) => (

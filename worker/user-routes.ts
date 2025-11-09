@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 import type { Env } from './core-utils';
-import { UserEntity, ChatBoardEntity, ContactSubmissionEntity, QuoteRequestEntity } from "./entities";
+import { UserEntity, ChatBoardEntity, ContactSubmissionEntity, QuoteRequestEntity, NewsletterSubscriptionEntity } from "./entities";
 import { ok, bad, notFound, isStr } from './core-utils';
 export function userRoutes(app: Hono<{ Bindings: Env }>) {
   app.get('/api/test', (c) => c.json({ success: true, data: { name: 'CF Workers Demo' }}));
@@ -99,5 +99,17 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
       requirements: body.requirements || "",
     });
     return ok(c, submission);
+  });
+  const newsletterSchema = z.object({
+    email: z.string().email("Invalid email address"),
+  });
+  app.post('/api/subscribe', zValidator('json', newsletterSchema), async (c) => {
+    const body = c.req.valid('json');
+    const subscription = await NewsletterSubscriptionEntity.create(c.env, {
+      id: crypto.randomUUID(),
+      email: body.email,
+      createdAt: new Date().toISOString(),
+    });
+    return ok(c, subscription);
   });
 }
