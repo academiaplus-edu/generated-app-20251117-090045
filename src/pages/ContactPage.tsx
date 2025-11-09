@@ -62,11 +62,11 @@ export function ContactPage() {
                 </div>
                 <div className="flex items-center gap-4">
                   <Phone className="h-6 w-6 text-brand-gold" />
-                  <span>+1 (555) 123-4567 (Virtual)</span>
+                  <span>+234 (815) 592-8993</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="h-6 w-6 text-brand-gold" />
-                  <span>123 Academic Lane, Scholar City, USA (Virtual Office)</span>
+                  <span>Abuja-Gate Area, Mini Campus, The Federal Polytechnic Offa</span>
                 </div>
               </div>
               <div className="flex space-x-4 pt-4">
