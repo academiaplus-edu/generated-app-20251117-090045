@@ -17,7 +17,7 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number().min(1, { message: 'Word count is required and must be at least 1.' }),
+  wordCount: z.string().min(1, { message: "Word count is required." }).transform((val) => Number(val)).refine((val) => val >= 1, { message: "Word count must be at least 1." }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
@@ -32,7 +32,7 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
-      wordCount: undefined,
+      wordCount: '' as any, // Controlled by react-hook-form, will be a string
       deadline: '',
       requirements: '',
       service: '',
