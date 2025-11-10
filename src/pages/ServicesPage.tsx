@@ -3,7 +3,7 @@ import { MainLayout } from '@/components/layout/MainLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { FileText, PenSquare, BookUp, GraduationCap, Microscope, Briefcase, Presentation, BookCopy, Languages, CheckCheck, FileSignature, Copyright } from 'lucide-react';
+import { PenSquare, BookUp, GraduationCap, CheckCheck, Database } from 'lucide-react';
 const services = {
   writing: {
     title: 'Academic Writing',
@@ -33,6 +33,16 @@ const services = {
       { title: 'Manuscript Submission', description: 'Navigating submission portals and requirements.', for: 'First-time Authors' },
       { title: 'Response to Reviewers', description: 'Crafting persuasive rebuttals and revisions.', for: 'Authors undergoing peer review' },
       { title: 'Copyright & Licensing', description: 'Guidance on author rights and open access.', for: 'All Published Authors' },
+    ],
+  },
+  data: {
+    title: 'Data Services',
+    icon: Database,
+    items: [
+      { title: 'Data Collection', description: 'Assistance with survey design, data scraping, and sourcing for quantitative and qualitative studies.', for: 'Researchers, PhD Candidates' },
+      { title: 'Data Analysis', description: 'Expert analysis using SPSS, R, Stata, and NVivo for statistical and thematic insights.', for: 'Academics, Institutions' },
+      { title: 'Synthetic Data Generation', description: 'Creating anonymized, realistic datasets for research and testing purposes.', for: 'Data Scientists, Innovators' },
+      { title: 'Data Transformation', description: 'Cleaning, structuring, and preparing raw data for robust analysis and visualization.', for: 'All Researchers' },
     ],
   },
   additional: {
