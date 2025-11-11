@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'p', text: 'Journals have very specific formatting requirements (e.g., APA, MLA), word limits, and submission procedures. Ignoring these guidelines is unprofessional and can result in an immediate desk rejection.' },
       { type: 'h2', text: '8. Overstated Claims or Unsubstantiated Conclusions' },
       { type: 'p', text: 'Your conclusions must be directly supported by your data. Exaggerating the importance of your findings or drawing conclusions that are not warranted by the evidence will be flagged by reviewers.' },
-      { type:- 'h2', text: '9. Ethical Concerns' },
+      { type: 'h2', text: '9. Ethical Concerns' },
       { type: 'p', text: 'Issues such as plagiarism, data fabrication, or failure to obtain proper ethical clearance for research involving human subjects are major red flags that will lead to immediate rejection and can damage your academic reputation.' },
       { type: 'h2', text: '10. A Simple Lack of Novelty' },
       { type: 'p', text: 'Sometimes, the research is sound but simply not new or interesting enough for a high-impact journal. It might replicate previous work without adding new insights or address a question that is not of broad interest to the journal\'s readership.' },
@@ -62,7 +62,7 @@ export const blogPosts: BlogPost[] = [
       { type: 'p', text: ' - **Write it Last:** Although it appears first, write the abstract after you have completed the rest of your paper to ensure it accurately reflects the content.' },
       { type: 'p', text: ' - **Be Concise and Clear:** Avoid jargon and use clear, direct language. Stick to the journal\'s word limit (typically 150-250 words).' },
       { type: 'p', text: ' - **Focus on Keywords:** Include important keywords that researchers in your field would use to search for papers on your topic. This enhances discoverability.' },
-      { type:- 'p', text: ' - **Follow Journal Guidelines:** Different journals may have different requirements for abstracts (structured vs. unstructured). Always adhere to their specific guidelines.' },
+      { type: 'p', text: ' - **Follow Journal Guidelines:** Different journals may have different requirements for abstracts (structured vs. unstructured). Always adhere to their specific guidelines.' },
     ],
   },
   {
