@@ -12,50 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
 import { api } from '@/lib/api-client';
-const blogPosts = [
-  {
-    title: '10 Common Reasons Manuscripts Get Rejected',
-    category: 'Publishing Strategies',
-    excerpt: 'Understanding why papers are rejected is the first step to avoiding common pitfalls and increasing your chances of acceptance.',
-    image: 'https://images.unsplash.com/photo-1583464653429-03a1f3a8b74a?q=80&w=2070&auto=format&fit=crop',
-    link: '#',
-  },
-  {
-    title: 'How to Write a Strong Abstract That Gets Noticed',
-    category: 'Academic Writing Tips',
-    excerpt: 'Your abstract is your paper\'s elevator pitch. Learn the key components of a powerful abstract that captures editors\' attention.',
-    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=80&w=2070&auto=format&fit=crop',
-    link: '#',
-  },
-  {
-    title: 'Thesis vs. Dissertation: Key Differences Explained',
-    category: 'Academic Writing Tips',
-    excerpt: 'While often used interchangeably, there are crucial differences. We break down what you need to know for your graduate degree.',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop',
-    link: '#',
-  },
-  {
-    title: 'Navigating Peer Review: A Guide for Early-Career Researchers',
-    category: 'Publishing Strategies',
-    excerpt: 'Peer review can be daunting. This guide provides actionable tips for responding to reviewer comments constructively and professionally.',
-    image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop',
-    link: '#',
-  },
-  {
-    title: 'Avoiding Predatory Journals: Red Flags to Watch For',
-    category: 'Publishing Strategies',
-    excerpt: 'Protect your research from predatory publishers. Learn to identify the warning signs and choose reputable journals for your work.',
-    image: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1974&auto=format&fit=crop',
-    link: '#',
-  },
-  {
-    title: 'Time Management for Researchers: Maximizing Productivity',
-    category: 'Researcher Life',
-    excerpt: 'Juggling research, writing, and teaching is a challenge. Discover proven time management techniques tailored for the academic world.',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop',
-    link: '#',
-  },
-];
+import { blogPosts } from '@/content/blog-posts';
 const newsletterSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
 });
@@ -94,7 +51,7 @@ export function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <Card key={post.title} className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-                <Link to={post.link} className="block">
+                <Link to={`/blog/${post.slug}`} className="block">
                   <AspectRatio ratio={16 / 9}>
                     <img src={post.image} alt={post.title} className="object-cover w-full h-full" />
                   </AspectRatio>
@@ -102,7 +59,7 @@ export function BlogPage() {
                 <CardHeader>
                   <Badge variant="secondary" className="w-fit bg-brand-gold/10 text-brand-gold">{post.category}</Badge>
                   <CardTitle className="font-serif mt-2">
-                    <Link to={post.link} className="hover:text-brand-gold transition-colors">{post.title}</Link>
+                    <Link to={`/blog/${post.slug}`} className="hover:text-brand-gold transition-colors">{post.title}</Link>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
@@ -110,7 +67,7 @@ export function BlogPage() {
                 </CardContent>
                 <CardFooter>
                   <Button asChild variant="link" className="p-0 text-brand-blue dark:text-brand-gold">
-                    <Link to={post.link}>Read More →</Link>
+                    <Link to={`/blog/${post.slug}`}>Read More →</Link>
                   </Button>
                 </CardFooter>
               </Card>
