@@ -14,7 +14,7 @@ export const blogPosts: BlogPost[] = [
     title: '10 Common Reasons Manuscripts Get Rejected',
     category: 'Publishing Strategies',
     excerpt: 'Understanding why papers are rejected is the first step to avoiding common pitfalls and increasing your chances of acceptance.',
-    image: 'https://images.unsplash.com/photo-1583464653429-03a1f3a8b74a?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop',
     author: 'ALLI, Noah Gbenga',
     date: 'October 26, 2023',
     content: [
