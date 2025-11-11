@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, BookOpenCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { WhatsappIcon } from '../icons/WhatsappIcon';
 const navLinks = [
@@ -37,7 +37,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src="https://i.imgur.com/1v3n521.png" alt="AcademiaPlus Logo" className="h-10 w-auto" />
+            <BookOpenCheck className="h-7 w-7 text-brand-blue dark:text-brand-gold" />
+            <span className="text-xl font-bold text-brand-blue dark:text-white">AcademiaPlus</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
@@ -62,7 +63,8 @@ export function Header() {
               <SheetContent side="right" className="w-full max-w-xs">
                 <div className="flex flex-col space-y-6 p-6">
                   <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 mb-6">
-                     <img src="https://i.imgur.com/1v3n521.png" alt="AcademiaPlus Logo" className="h-10 w-auto" />
+                     <BookOpenCheck className="h-7 w-7 text-brand-blue dark:text-brand-gold" />
+                     <span className="text-xl font-bold text-brand-blue dark:text-white">AcademiaPlus</span>
                   </Link>
                   {navLinks.map((link) => (
                     <NavLinkItem key={link.href} {...link} className="text-lg" />
