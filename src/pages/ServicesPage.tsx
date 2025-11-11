@@ -9,60 +9,65 @@ const services = {
     title: 'Academic Writing',
     icon: PenSquare,
     items: [
-      { title: 'Research Papers', description: 'Original articles, reviews, and analyses in management, social sciences, and more.', for: 'Researchers, Postdocs' },
-      { title: 'Theses & Dissertations', description: 'Comprehensive support from proposal to final draft, with a focus on social science methodologies.', for: 'PhD & Master’s Candidates' },
-      { title: 'Case Studies & Reports', description: 'Detailed and structured reporting for business and social science findings.', for: 'Students, Professionals' },
-      { title: 'Personal Statements & SOPs', description: 'Crafting compelling narratives for graduate school applications.', for: 'Applicants for Grad School' },
+      { title: 'Research Papers', description: 'Original articles, reviews, and analyses in management, social sciences, and more.', for: 'Researchers, Postdocs', price: 'Starts from ₦20,000' },
+      { title: 'Theses & Dissertations', description: 'Comprehensive support from proposal to final draft, with a focus on social science methodologies.', for: 'PhD & Master’s Candidates', price: 'Starts from ₦20,000' },
+      { title: 'Case Studies & Reports', description: 'Detailed and structured reporting for business and social science findings.', for: 'Students, Professionals', price: 'Starts from ₦20,000' },
+      { title: 'Personal Statements & SOPs', description: 'Crafting compelling narratives for graduate school applications.', for: 'Applicants for Grad School', price: 'Starts from ₦20,000' },
     ],
   },
   editing: {
     title: 'Editing & Proofreading',
     icon: CheckCheck,
     items: [
-      { title: 'Language Polishing', description: 'Grammar, clarity, style, and tone enhancement.', for: 'Non-native English Speakers' },
-      { title: 'Technical Editing', description: 'Improving structure, flow, logic, and coherence.', for: 'All Academic Authors' },
-      { title: 'Journal Formatting', description: 'Adherence to APA, MLA, Chicago, Vancouver, etc.', for: 'Authors targeting specific journals' },
-      { title: 'Pre-submission Review', description: 'A final check to maximize acceptance chances.', for: 'Researchers ready to submit' },
+      { title: 'Language Polishing', description: 'Grammar, clarity, style, and tone enhancement.', for: 'Non-native English Speakers', price: 'Starts from ₦20,000' },
+      { title: 'Technical Editing', description: 'Improving structure, flow, logic, and coherence.', for: 'All Academic Authors', price: 'Starts from ₦20,000' },
+      { title: 'Journal Formatting', description: 'Adherence to APA, MLA, Chicago, Vancouver, etc.', for: 'Authors targeting specific journals', price: 'Starts from ₦20,000' },
+      { title: 'Pre-submission Review', description: 'A final check to maximize acceptance chances.', for: 'Researchers ready to submit', price: 'Starts from ₦20,000' },
+      { title: 'Plagiarism Check', description: 'Ensure originality with our comprehensive plagiarism detection service using Turnitin.', for: 'All Academic Authors', price: 'Starts from ₦3,000' },
+      { title: 'AI Content Check', description: 'Verify your manuscript for AI-generated content to meet new journal standards.', for: 'All Academic Authors', price: 'Starts from ₦3,000' },
     ],
   },
   publishing: {
     title: 'Publishing Support',
     icon: BookUp,
     items: [
-      { title: 'Journal Selection Strategy', description: 'Identifying suitable, high-impact journals for your field.', for: 'Early-career Researchers' },
-      { title: 'Manuscript Submission', description: 'Navigating submission portals and requirements.', for: 'First-time Authors' },
-      { title: 'Response to Reviewers', description: 'Crafting persuasive rebuttals and revisions.', for: 'Authors undergoing peer review' },
-      { title: 'Copyright & Licensing', description: 'Guidance on author rights and open access.', for: 'All Published Authors' },
+      { title: 'Journal Selection Strategy', description: 'Identifying suitable, high-impact journals for your field.', for: 'Early-career Researchers', price: 'Starts from ₦20,000' },
+      { title: 'Manuscript Submission', description: 'Navigating submission portals and requirements.', for: 'First-time Authors', price: 'Starts from ₦20,000' },
+      { title: 'Response to Reviewers', description: 'Crafting persuasive rebuttals and revisions.', for: 'Authors undergoing peer review', price: 'Starts from ₦20,000' },
+      { title: 'Copyright & Licensing', description: 'Guidance on author rights and open access.', for: 'All Published Authors', price: 'Starts from ₦20,000' },
     ],
   },
   data: {
     title: 'Data Services',
     icon: Database,
     items: [
-      { title: 'Data Collection', description: 'Assistance with survey design, data scraping, and sourcing for quantitative and qualitative studies.', for: 'Researchers, PhD Candidates' },
-      { title: 'Data Analysis', description: 'Expert analysis using SPSS, R, Stata, and NVivo for statistical and thematic insights.', for: 'Academics, Institutions' },
-      { title: 'Synthetic Data Generation', description: 'Creating anonymized, realistic datasets for research and testing purposes.', for: 'Data Scientists, Innovators' },
-      { title: 'Data Transformation', description: 'Cleaning, structuring, and preparing raw data for robust analysis and visualization.', for: 'All Researchers' },
+      { title: 'Data Collection', description: 'Assistance with survey design, data scraping, and sourcing for quantitative and qualitative studies.', for: 'Researchers, PhD Candidates', price: 'Starts from ₦20,000' },
+      { title: 'Data Analysis', description: 'Expert analysis using SPSS, R, Stata, and NVivo for statistical and thematic insights.', for: 'Academics, Institutions', price: 'Starts from ₦20,000' },
+      { title: 'Synthetic Data Generation', description: 'Creating anonymized, realistic datasets for research and testing purposes.', for: 'Data Scientists, Innovators', price: 'Starts from ₦20,000' },
+      { title: 'Data Transformation', description: 'Cleaning, structuring, and preparing raw data for robust analysis and visualization.', for: 'All Researchers', price: 'Starts from ₦20,000' },
     ],
   },
   additional: {
     title: 'Additional Services',
     icon: GraduationCap,
     items: [
-      { title: 'Grant & Proposal Writing', description: 'Developing strong proposals for research funding.', for: 'Principal Investigators, NGOs' },
-      { title: 'Conference Materials', description: 'Abstracts, posters, and presentations.', for: 'Academic Presenters' },
-      { title: 'Book Chapters & Monographs', description: 'Support for long-form academic works.', for: 'Established Academics' },
-      { title: 'Translation + Editing', description: 'High-quality translation with academic polish.', for: 'International Scholars' },
+      { title: 'Grant & Proposal Writing', description: 'Developing strong proposals for research funding.', for: 'Principal Investigators, NGOs', price: 'Starts from ₦20,000' },
+      { title: 'Conference Materials', description: 'Abstracts, posters, and presentations.', for: 'Academic Presenters', price: 'Starts from ₦20,000' },
+      { title: 'Book Chapters & Monographs', description: 'Support for long-form academic works.', for: 'Established Academics', price: 'Starts from ₦20,000' },
+      { title: 'Translation + Editing', description: 'High-quality translation with academic polish.', for: 'International Scholars', price: 'Starts from ₦20,000' },
     ],
   },
 };
-const ServiceCard = ({ title, description, forWho }: { title: string; description: string; forWho: string }) => (
+const ServiceCard = ({ title, description, forWho, price }: { title: string; description: string; forWho: string; price: string }) => (
   <Card className="h-full flex flex-col transition-all hover:shadow-lg hover:-translate-y-1">
     <CardHeader>
       <CardTitle className="text-lg font-serif">{title}</CardTitle>
     </CardHeader>
     <CardContent className="flex-grow flex flex-col justify-between">
-      <p className="text-muted-foreground mb-4">{description}</p>
+      <div>
+        <p className="text-muted-foreground mb-4">{description}</p>
+        <p className="font-bold text-brand-gold mb-4">{price}</p>
+      </div>
       <div>
         <p className="text-xs font-semibold text-brand-blue dark:text-brand-light uppercase tracking-wider">Who it's for</p>
         <p className="text-sm text-muted-foreground">{forWho}</p>
@@ -91,7 +96,7 @@ export function ServicesPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {category.items.map((service) => (
-                  <ServiceCard key={service.title} title={service.title} description={service.description} forWho={service.for} />
+                  <ServiceCard key={service.title} title={service.title} description={service.description} forWho={service.for} price={service.price} />
                 ))}
               </div>
             </section>
