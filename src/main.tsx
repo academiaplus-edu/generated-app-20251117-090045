@@ -19,6 +19,7 @@ import { BlogPage } from '@/pages/BlogPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { QuotePage } from '@/pages/QuotePage';
 import { FAQPage } from '@/pages/FAQPage';
+import { ArticlePage } from '@/pages/ArticlePage';
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <RouteErrorBoundary /> },
   { path: "/services", element: <ServicesPage />, errorElement: <RouteErrorBoundary /> },
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   { path: "/how-it-works", element: <HowItWorksPage />, errorElement: <RouteErrorBoundary /> },
   { path: "/success-stories", element: <SuccessStoriesPage />, errorElement: <RouteErrorBoundary /> },
   { path: "/blog", element: <BlogPage />, errorElement: <RouteErrorBoundary /> },
+  { path: "/blog/:slug", element: <ArticlePage />, errorElement: <RouteErrorBoundary /> },
   { path: "/contact", element: <ContactPage />, errorElement: <RouteErrorBoundary /> },
   { path: "/quote", element: <QuotePage />, errorElement: <RouteErrorBoundary /> },
   { path: "/faq", element: <FAQPage />, errorElement: <RouteErrorBoundary /> },
