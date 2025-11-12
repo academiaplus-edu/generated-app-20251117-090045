@@ -1,12 +1,39 @@
 import React from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ShieldCheck, Star, Users, Handshake } from 'lucide-react';
 const teamMembers = [
-  { name: 'ALLI, Noah Gbenga', role: 'Founder, Lead Consultant & Publication Support Manager', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=17Xa28AAAAAJ&citpid=6', bio: 'A published author in management and social sciences with over 15 years of experience in academic consulting.' },
-  { name: 'Ganiyu Kamal (PhD in view)', role: 'Senior Editor, Quantitative Social Science', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=Hd-yoe4AAAAJ&citpid=2', bio: 'Specializes in quantitative research manuscripts, with a focus on statistical analysis and data presentation.' },
-  { name: 'Aina John (PhD in view)', role: 'Qualitative Research Specialist', avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=6raPVkUAAAAJ&citpid=1', bio: 'Expert in qualitative methodologies, ensuring arguments are coherent, compelling, and well-structured.' },
+  { 
+    name: (
+      <a 
+        href="https://scholar.google.com/citations?user=17Xa28AAAAAJ&hl=en" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="hover:text-brand-gold transition-colors underline"
+      >
+        ALLI, Noah Gbenga
+      </a>
+    ), 
+    role: 'Founder, Lead Consultant & Publication Support Manager', 
+    avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=17Xa28AAAAAJ&citpid=6', 
+    bio: 'A published author in management and social sciences with over 15 years of experience in academic consulting.',
+    fallback: 'ANG'
+  },
+  { 
+    name: 'Ganiyu Kamal (PhD in view)', 
+    role: 'Senior Editor, Quantitative Social Science', 
+    avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=Hd-yoe4AAAAJ&citpid=2', 
+    bio: 'Specializes in quantitative research manuscripts, with a focus on statistical analysis and data presentation.',
+    fallback: 'GK'
+  },
+  { 
+    name: 'Aina John (PhD in view)', 
+    role: 'Qualitative Research Specialist', 
+    avatar: 'https://scholar.googleusercontent.com/citations?view_op=view_photo&user=6raPVkUAAAAJ&citpid=1', 
+    bio: 'Expert in qualitative methodologies, ensuring arguments are coherent, compelling, and well-structured.',
+    fallback: 'AJ'
+  },
 ];
 const coreValues = [
   { title: 'Integrity', icon: ShieldCheck, description: 'We uphold the highest ethical standards, ensuring all work is original and properly attributed.' },
@@ -53,11 +80,11 @@ export function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {teamMembers.map(member => (
-              <Card key={member.name} className="text-center">
+              <Card key={member.fallback} className="text-center">
                 <CardContent className="pt-6">
                   <Avatar className="w-24 h-24 mx-auto mb-4">
                     <AvatarImage src={member.avatar} />
-                    <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                    <AvatarFallback>{member.fallback}</AvatarFallback>
                   </Avatar>
                   <h3 className="text-lg font-bold font-serif">{member.name}</h3>
                   <p className="text-brand-gold text-sm font-semibold">{member.role}</p>
