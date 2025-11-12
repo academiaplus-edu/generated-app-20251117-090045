@@ -34,22 +34,24 @@ export function PartnershipsPage() {
               We are proud to collaborate with leading universities, research institutions, and academic networks.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {partners.map((partner) => (
-              <div key={partner.name} className="text-center p-6 border rounded-lg bg-background hover:shadow-md transition-shadow flex flex-col items-center justify-center space-y-4">
-                {partner.logo ? (
-                  <img src={partner.logo} alt={`${partner.name} logo`} className="h-20 object-contain" />
-                ) : (
-                  <div className="h-20 flex items-center justify-center">
-                     <Handshake className="h-10 w-10 text-muted-foreground" />
+          <div className="flex justify-center">
+            <div className="inline-grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {partners.map((partner) => (
+                <div key={partner.name} className="text-center p-6 border rounded-lg bg-background hover:shadow-md transition-shadow flex flex-col items-center justify-center space-y-4">
+                  {partner.logo ? (
+                    <img src={partner.logo} alt={`${partner.name} logo`} className="h-20 object-contain" />
+                  ) : (
+                    <div className="h-20 flex items-center justify-center">
+                       <Handshake className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-base font-semibold text-brand-blue dark:text-white">{partner.name}</p>
+                    <p className="text-sm text-brand-gold">{partner.type}</p>
                   </div>
-                )}
-                <div>
-                  <p className="text-base font-semibold text-brand-blue dark:text-white">{partner.name}</p>
-                  <p className="text-sm text-brand-gold">{partner.type}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
