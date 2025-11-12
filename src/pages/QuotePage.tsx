@@ -23,6 +23,7 @@ const quoteFormSchema = z.object({
   requirements: z.string().optional(),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
 });
+type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 const BASE_RATE_PER_WORD = 5; // NGN
 const SERVICE_MULTIPLIER = {
   Writing: 1.5,
@@ -35,7 +36,7 @@ const DEADLINE_MULTIPLIER = {
 };
 export function QuotePage() {
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
-  const form = useForm<z.infer<typeof quoteFormSchema>>({
+  const form = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
       name: '',
@@ -72,7 +73,7 @@ export function QuotePage() {
       setEstimatedPrice(null);
     }
   }, [wordCount, service, deadline]);
-  async function onSubmit(data: z.infer<typeof quoteFormSchema>) {
+  async function onSubmit(data: QuoteFormValues) {
     const promise = api('/api/quote', {
       method: 'POST',
       body: JSON.stringify(data),
