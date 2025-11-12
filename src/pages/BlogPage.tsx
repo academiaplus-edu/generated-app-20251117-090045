@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,11 +13,23 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { toast } from 'sonner';
 import { api } from '@/lib/api-client';
 import { blogPosts } from '@/content/blog-posts';
+import { Search } from 'lucide-react';
 const newsletterSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address.' }),
 });
 type NewsletterFormValues = z.infer<typeof newsletterSchema>;
+const categories = ['All', ...Array.from(new Set(blogPosts.map(p => p.category)))];
 export function BlogPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const filteredPosts = useMemo(() => {
+    return blogPosts
+      .filter(post => selectedCategory === 'All' || post.category === selectedCategory)
+      .filter(post => 
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  }, [searchTerm, selectedCategory]);
   const form = useForm<NewsletterFormValues>({
     resolver: zodResolver(newsletterSchema),
     defaultValues: { email: '' },
@@ -48,31 +60,64 @@ export function BlogPage() {
       </div>
       <div className="bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <Card key={post.title} className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-                <Link to={`/blog/${post.slug}`} className="block">
-                  <AspectRatio ratio={16 / 9}>
-                    <img src={post.image} alt={post.title} className="object-cover w-full h-full" />
-                  </AspectRatio>
-                </Link>
-                <CardHeader>
-                  <Badge variant="secondary" className="w-fit bg-brand-gold/10 text-brand-gold">{post.category}</Badge>
-                  <CardTitle className="font-serif mt-2">
-                    <Link to={`/blog/${post.slug}`} className="hover:text-brand-gold transition-colors">{post.title}</Link>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground">{post.excerpt}</p>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild variant="link" className="p-0 text-brand-blue dark:text-brand-gold">
-                    <Link to={`/blog/${post.slug}`}>Read More →</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+          {/* Filters */}
+          <div className="mb-12 space-y-6">
+            <div className="relative max-w-lg mx-auto">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input 
+                type="search"
+                placeholder="Search articles..."
+                className="pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              {categories.map(category => (
+                <Button 
+                  key={category}
+                  variant={selectedCategory === category ? 'default' : 'outline'}
+                  onClick={() => setSelectedCategory(category)}
+                  className={selectedCategory === category ? 'bg-brand-blue text-white' : ''}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
+          {/* Blog Grid */}
+          {filteredPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post) => (
+                <Card key={post.slug} className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
+                  <Link to={`/blog/${post.slug}`} className="block">
+                    <AspectRatio ratio={16 / 9}>
+                      <img src={post.image} alt={post.title} className="object-cover w-full h-full" />
+                    </AspectRatio>
+                  </Link>
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit bg-brand-gold/10 text-brand-gold">{post.category}</Badge>
+                    <CardTitle className="font-serif mt-2">
+                      <Link to={`/blog/${post.slug}`} className="hover:text-brand-gold transition-colors">{post.title}</Link>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-muted-foreground">{post.excerpt}</p>
+                  </CardContent>
+                  <CardFooter>
+                    <Button asChild variant="link" className="p-0 text-brand-blue dark:text-brand-gold">
+                      <Link to={`/blog/${post.slug}`}>Read More →</Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <h3 className="text-2xl font-semibold">No Articles Found</h3>
+              <p className="text-muted-foreground mt-2">Try adjusting your search or filter criteria.</p>
+            </div>
+          )}
         </div>
       </div>
       <section className="py-20 md:py-32 bg-brand-light dark:bg-brand-blue">

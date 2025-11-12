@@ -55,7 +55,7 @@ export function Footer() {
               <li><Link to="/about" className="text-gray-300 hover:text-brand-gold transition-colors">About Us</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-brand-gold transition-colors">Services</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-brand-gold transition-colors">Blog</Link></li>
-              <li><Link to="/faq" className="text-gray-300 hover:text-brand-gold transition-colors">FAQ</Link></li>
+              <li><Link to="/partnerships" className="text-gray-300 hover:text-brand-gold transition-colors">Partnerships</Link></li>
             </ul>
           </div>
           <div>
@@ -64,13 +64,14 @@ export function Footer() {
               <li><Link to="/contact" className="text-gray-300 hover:text-brand-gold transition-colors">Contact Us</Link></li>
               <li><Link to="/how-it-works" className="text-gray-300 hover:text-brand-gold transition-colors">How It Works</Link></li>
               <li><Link to="/quote" className="text-gray-300 hover:text-brand-gold transition-colors">Get a Quote</Link></li>
+              <li><Link to="/faq" className="text-gray-300 hover:text-brand-gold transition-colors">FAQ</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold text-white mb-4">Newsletter</h3>
             <p className="text-sm text-gray-300 mb-2">Get monthly writing tips & journal alerts.</p>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
                 <FormField
                   control={form.control}
                   name="email"
@@ -83,7 +84,7 @@ export function Footer() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold" disabled={form.formState.isSubmitting}>
+                <Button type="submit" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold w-full sm:w-auto" disabled={form.formState.isSubmitting}>
                   {form.formState.isSubmitting ? '...' : 'Subscribe'}
                 </Button>
               </form>

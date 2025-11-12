@@ -14,11 +14,11 @@ export function AppLayout({ children, container = false, className, contentClass
     <SidebarProvider defaultOpen={false}>
       <AppSidebar />
       <SidebarInset className={className}>
-        <div className="absolute left-2 top-2 z-20">
+        <div className="md:hidden p-2">
           <SidebarTrigger />
         </div>
         {container ? (
-          <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 lg:py-12" + (contentClassName ? ` ${contentClassName}` : "")}>{children}</div>
+          <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 lg:py-10" + (contentClassName ? ` ${contentClassName}` : "")}>{children}</div>
         ) : (
           children
         )}

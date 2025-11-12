@@ -20,6 +20,8 @@ import { ContactPage } from '@/pages/ContactPage';
 import { QuotePage } from '@/pages/QuotePage';
 import { FAQPage } from '@/pages/FAQPage';
 import { ArticlePage } from '@/pages/ArticlePage';
+import { PartnershipsPage } from '@/pages/PartnershipsPage';
+import { ClientLoginPage } from '@/pages/ClientLoginPage';
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <RouteErrorBoundary /> },
   { path: "/services", element: <ServicesPage />, errorElement: <RouteErrorBoundary /> },
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
   { path: "/contact", element: <ContactPage />, errorElement: <RouteErrorBoundary /> },
   { path: "/quote", element: <QuotePage />, errorElement: <RouteErrorBoundary /> },
   { path: "/faq", element: <FAQPage />, errorElement: <RouteErrorBoundary /> },
+  { path: "/partnerships", element: <PartnershipsPage />, errorElement: <RouteErrorBoundary /> },
+  { path: "/client-login", element: <ClientLoginPage />, errorElement: <RouteErrorBoundary /> },
 ]);
 // Do not touch this code
 createRoot(document.getElementById('root')!).render(
