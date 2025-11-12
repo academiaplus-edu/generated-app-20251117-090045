@@ -10,6 +10,10 @@ const partners = [
   { name: 'Social Science Research Council', type: 'Network Affiliate' },
   { name: 'Elsevier', type: 'Publisher Network' },
   { name: 'Springer Nature', type: 'Publisher Network' },
+  { name: 'The Federal Polytechnic Offa', type: 'Academic Partner' },
+  { name: 'Joseph Ayo Babalola University (JABU)', type: 'Academic Partner' },
+  { name: 'College of Insurance and Financial Management (CIFM)', type: 'Institutional Affiliate' },
+  { name: 'Lagos State University (LASU)', type: 'Academic Partner' },
 ];
 export function PartnershipsPage() {
   return (
