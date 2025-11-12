@@ -37,17 +37,17 @@ export function HomePage() {
       {/* Hero Section */}
       <section className="bg-brand-light dark:bg-brand-blue py-20 md:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1 {...fadeIn} className="text-4xl md:text-6xl font-extrabold font-serif text-brand-blue dark:text-white leading-tight">
+          <motion.h1 {...fadeIn} className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-serif text-brand-blue dark:text-white leading-tight">
             From Draft to Publication – <br /> We’re With You Every Step of the Way.
           </motion.h1>
           <motion.p {...fadeIn} transition={{ delay: 0.2 }} className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
             Elevating Academic Excellence Through Expert Writing & Publishing Support.
           </motion.p>
           <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="mt-10 flex justify-center gap-4">
-            <Button asChild size="lg" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-8 py-6">
+            <Button asChild size="lg" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-6 py-3 md:px-8 md:py-4">
               <Link to="/quote">Get a Free Quote</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-base px-8 py-6">
+            <Button asChild size="lg" variant="outline" className="text-base px-6 py-3 md:px-8 md:py-4">
               <Link to="/services">Explore Services</Link>
             </Button>
           </motion.div>
