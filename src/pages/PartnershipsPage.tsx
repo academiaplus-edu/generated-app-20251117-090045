@@ -6,7 +6,7 @@ import { Handshake } from 'lucide-react';
 const partners = [
   { name: 'University of Lagos', type: 'Academic Partner', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpWu0gSDIX9pLRj5s00ajAXjx9AJ5vR2LxJQ&s' },
   { name: 'Ahmadu Bello University', type: 'Research Collaboration', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnQLkH0VWFvm7ldWbQzoNvU13_Q7Dec7vjlw&s' },
-  { name: 'Nigerian Institute of Social and Economic Research (NISER)', type: 'Institutional Affiliate', logo: '' },
+  { name: 'Nigerian Institute of Social and Economic Research (NISER)', type: 'Institutional Affiliate', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHyKJDJ2ooppzXccD5_Z_W26Y3IhPKlWalxQ&s' },
   { name: 'Social Science Research Council', type: 'Network Affiliate', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi-6Aqa7QPxaf56XYMugGOnyg-TuL6WbpfyA&s' },
   { name: 'Elsevier', type: 'Publisher Network', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD8MkVdr9WIJ5wYDkyR2ryK84fS792-VYqNw&s' },
   { name: 'Springer Nature', type: 'Publisher Network', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR748UQA1nS3oE2gJj8dJHD5CwCSre9Jr7T8Q&s' },
