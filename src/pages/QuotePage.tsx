@@ -44,7 +44,6 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
-      wordCount: undefined,
       deadline: '',
       requirements: '',
       service: '',
@@ -178,6 +177,7 @@ export function QuotePage() {
                                 placeholder="e.g., 8000"
                                 {...field}
                                 value={field.value ?? ''}
+                                onChange={e => field.onChange(e.target.value === '' ? undefined : +e.target.value)}
                               />
                             </FormControl>
                             <FormMessage />
@@ -217,7 +217,7 @@ export function QuotePage() {
                 <Card className="bg-brand-light dark:bg-brand-blue/50">
                   <CardHeader>
                     <CardTitle className="font-serif text-xl">Estimated Cost</CardTitle>
-                  </CardHeader>
+                  </Header>
                   <CardContent>
                     {estimatedPrice !== null ? (
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
