@@ -217,7 +217,7 @@ export function QuotePage() {
                 <Card className="bg-brand-light dark:bg-brand-blue/50">
                   <CardHeader>
                     <CardTitle className="font-serif text-xl">Estimated Cost</CardTitle>
-                  </Header>
+                  </CardHeader>
                   <CardContent>
                     {estimatedPrice !== null ? (
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
