@@ -44,10 +44,11 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
+      wordCount: undefined,
       deadline: '',
       requirements: '',
       service: '',
-    }
+    },
   });
   const wordCount = form.watch('wordCount');
   const service = form.watch('service');
