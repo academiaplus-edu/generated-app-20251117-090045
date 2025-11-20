@@ -2,7 +2,7 @@
 
 A visually stunning, professional website for an academic writing and publishing support service, designed to build trust and attract scholarly clients. Built on Cloudflare Workers with a React frontend.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/academiaplus-edu/generated-app-20251117-090045)
 
 ---
 
@@ -110,7 +110,7 @@ Wrangler will build the worker and deploy it along with the static assets from t
 
 Alternatively, deploy directly from your GitHub repository:
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/academiaplus-edu/generated-app-20251117-090045)
 
 ## License
 
