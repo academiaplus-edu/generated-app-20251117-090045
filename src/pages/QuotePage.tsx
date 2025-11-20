@@ -44,7 +44,6 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
-      wordCount: undefined,
       deadline: '',
       requirements: '',
       service: '',
