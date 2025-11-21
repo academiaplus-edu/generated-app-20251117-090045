@@ -4,7 +4,7 @@
  */
  {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "academiaplus-nzfjnfv7sizp5hd83ac7e",
+	"name": "academiaplus",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-04-24",
 	"assets": {
