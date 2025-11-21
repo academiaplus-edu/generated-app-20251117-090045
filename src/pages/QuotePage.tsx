@@ -44,6 +44,7 @@ export function QuotePage() {
       documentType: '',
       academicLevel: '',
       subjectArea: '',
+      wordCount: 0,
       deadline: '',
       requirements: '',
       service: '',
@@ -176,8 +177,7 @@ export function QuotePage() {
                                 type="number"
                                 placeholder="e.g., 8000"
                                 {...field}
-                                value={field.value ?? ''}
-                                onChange={e => field.onChange(e.target.value === '' ? undefined : +e.target.value)}
+                                onChange={e => field.onChange(e.target.valueAsNumber || 0)}
                               />
                             </FormControl>
                             <FormMessage />
