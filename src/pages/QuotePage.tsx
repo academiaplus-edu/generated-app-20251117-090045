@@ -18,14 +18,14 @@ const quoteFormSchema = z.object({
   documentType: z.string().min(1, { message: 'Please select a document type.' }),
   academicLevel: z.string().min(1, { message: 'Please select an academic level.' }),
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
-  wordCount: z.coerce.number().int().min(1, { message: "Word count must be a positive number." }),
+  wordCount: z.number().int().min(1, { message: "Word count must be a positive number." }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
-  requirements: z.string().optional().default(""),
+  requirements: z.string().default(""),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
 });
 type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 const BASE_RATE_PER_WORD = 5; // NGN
-const SERVICE_MULTIPLIER = {
+const SERVICE_MULTIPLIER: Record<string, number> = {
   Writing: 1.5,
   Editing: 1.0,
   'Full Support (Writing + Editing + Publishing)': 2.0,
@@ -55,8 +55,7 @@ export function QuotePage() {
   const deadline = form.watch('deadline');
   useEffect(() => {
     if (wordCount && wordCount > 0 && service) {
-      const serviceKey = service as keyof typeof SERVICE_MULTIPLIER;
-      const serviceMult = SERVICE_MULTIPLIER[serviceKey] || 1.0;
+      const serviceMult = SERVICE_MULTIPLIER[service] || 1.0;
       let deadlineMult = DEADLINE_MULTIPLIER['standard'];
       if (deadline) {
         const deadlineDate = new Date(deadline);
@@ -73,7 +72,7 @@ export function QuotePage() {
       setEstimatedPrice(null);
     }
   }, [wordCount, service, deadline]);
-  async function onSubmit(data: QuoteFormValues) {
+  const onSubmit = async (data: QuoteFormValues) => {
     try {
       const promise = api('/api/quote', {
         method: 'POST',
@@ -92,7 +91,7 @@ export function QuotePage() {
       console.error('Submission failed', error);
       toast.error('An unexpected error occurred.');
     }
-  }
+  };
   return (
     <MainLayout>
       <div className="bg-brand-light dark:bg-brand-blue">
@@ -181,7 +180,7 @@ export function QuotePage() {
                               <Input
                                 type="number"
                                 placeholder="e.g., 8000"
-                                {...field}
+                                value={field.value}
                                 onChange={e => {
                                   const val = e.target.valueAsNumber;
                                   field.onChange(isNaN(val) ? 0 : val);
