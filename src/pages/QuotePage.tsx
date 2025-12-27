@@ -20,7 +20,7 @@ const quoteFormSchema = z.object({
   subjectArea: z.string().min(1, { message: 'Please select a subject area.' }),
   wordCount: z.coerce.number().int().min(1, { message: "Word count must be a positive number." }),
   deadline: z.string().min(1, { message: 'Deadline is required.' }),
-  requirements: z.string().optional(),
+  requirements: z.string().optional().default(""),
   service: z.string().min(1, { message: 'Please select a preferred service.' }),
 });
 type QuoteFormValues = z.infer<typeof quoteFormSchema>;
@@ -74,19 +74,24 @@ export function QuotePage() {
     }
   }, [wordCount, service, deadline]);
   async function onSubmit(data: QuoteFormValues) {
-    const promise = api('/api/quote', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
-    toast.promise(promise, {
-      loading: 'Submitting your request...',
-      success: () => {
-        form.reset();
-        setEstimatedPrice(null);
-        return 'Quote request submitted! We will email you a detailed quote shortly.';
-      },
-      error: 'Failed to submit request. Please check your details and try again.',
-    });
+    try {
+      const promise = api('/api/quote', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+      toast.promise(promise, {
+        loading: 'Submitting your request...',
+        success: () => {
+          form.reset();
+          setEstimatedPrice(null);
+          return 'Quote request submitted! We will email you a detailed quote shortly.';
+        },
+        error: 'Failed to submit request. Please check your details and try again.',
+      });
+    } catch (error) {
+      console.error('Submission failed', error);
+      toast.error('An unexpected error occurred.');
+    }
   }
   return (
     <MainLayout>
@@ -177,7 +182,10 @@ export function QuotePage() {
                                 type="number"
                                 placeholder="e.g., 8000"
                                 {...field}
-                                onChange={e => field.onChange(e.target.valueAsNumber || 0)}
+                                onChange={e => {
+                                  const val = e.target.valueAsNumber;
+                                  field.onChange(isNaN(val) ? 0 : val);
+                                }}
                               />
                             </FormControl>
                             <FormMessage />
@@ -204,7 +212,7 @@ export function QuotePage() {
                       <FormField control={form.control} name="requirements" render={({ field }) => (
                         <FormItem><FormLabel>Specific Requirements (Optional)</FormLabel><FormControl><Textarea placeholder="e.g., Format for APA 7th edition, focus on improving the methodology section..." rows={4} {...field} /></FormControl><FormMessage /></FormItem>
                       )} />
-                      <Button type="submit" size="lg" className="w-full bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold" disabled={form.formState.isSubmitting}>
+                      <Button type="submit" size="lg" className="w-full bg-brand-teal hover:bg-cyan-400 text-brand-blue font-bold" disabled={form.formState.isSubmitting}>
                         {form.formState.isSubmitting ? 'Submitting...' : 'Submit Request'}
                       </Button>
                     </form>
@@ -214,14 +222,14 @@ export function QuotePage() {
             </div>
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <Card className="bg-brand-light dark:bg-brand-blue/50">
+                <Card className="bg-brand-light dark:bg-brand-blue/50 border-brand-teal/20">
                   <CardHeader>
                     <CardTitle className="font-serif text-xl">Estimated Cost</CardTitle>
                   </CardHeader>
                   <CardContent>
                     {estimatedPrice !== null ? (
                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                        <p className="text-4xl font-bold text-brand-blue dark:text-white">
+                        <p className="text-4xl font-bold text-brand-blue dark:text-brand-teal">
                           ₦{estimatedPrice.toLocaleString()}
                         </p>
                         <p className="text-muted-foreground mt-2 text-sm">

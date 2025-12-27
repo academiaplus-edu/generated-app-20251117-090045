@@ -23,8 +23,8 @@ export function Header() {
       onClick={() => setIsOpen(false)}
       className={({ isActive }) =>
         cn(
-          'text-sm font-medium transition-colors hover:text-brand-gold',
-          isActive ? 'text-brand-gold' : 'text-brand-blue dark:text-brand-light',
+          'text-sm font-medium transition-colors hover:text-brand-teal',
+          isActive ? 'text-brand-teal' : 'text-brand-blue dark:text-brand-light',
           className
         )
       }
@@ -37,7 +37,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <BookOpenCheck className="h-7 w-7 text-brand-blue dark:text-brand-gold" />
+            <BookOpenCheck className="h-7 w-7 text-brand-teal" />
             <span className="text-xl font-bold text-brand-blue dark:text-white">AcademiaPlus</span>
           </Link>
           <nav className="hidden lg:flex items-center space-x-6">
@@ -50,10 +50,10 @@ export function Header() {
               <WhatsappIcon className="h-6 w-6" />
               <span className="sr-only">WhatsApp</span>
             </a>
-            <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex items-center gap-2">
+            <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex items-center gap-2 border-brand-teal/30 hover:border-brand-teal">
               <Link to="/client-login"><User className="h-4 w-4" /> Client Login</Link>
             </Button>
-            <Button asChild className="hidden md:inline-flex bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold">
+            <Button asChild className="hidden md:inline-flex bg-brand-teal hover:bg-cyan-400 text-brand-blue font-bold shadow-soft">
               <Link to="/quote">Get a Free Quote</Link>
             </Button>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -66,17 +66,17 @@ export function Header() {
               <SheetContent side="right" className="w-full max-w-xs bg-background">
                 <div className="grid h-full grid-rows-[auto_1fr_auto] p-6">
                   <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 mb-6">
-                     <BookOpenCheck className="h-7 w-7 text-brand-blue dark:text-brand-gold" />
+                     <BookOpenCheck className="h-7 w-7 text-brand-teal" />
                      <span className="text-xl font-bold text-brand-blue dark:text-white">AcademiaPlus</span>
                   </Link>
                   <nav className="grid gap-6">
                     {navLinks.map((link) => (
                       <NavLinkItem key={link.href} {...link} className="text-lg" />
                     ))}
-                     <NavLink to="/faq" onClick={() => setIsOpen(false)} className="text-lg font-medium text-brand-blue dark:text-brand-light transition-colors hover:text-brand-gold">FAQ</NavLink>
+                     <NavLink to="/faq" onClick={() => setIsOpen(false)} className="text-lg font-medium text-brand-blue dark:text-brand-light transition-colors hover:text-brand-teal">FAQ</NavLink>
                   </nav>
                   <div className="mt-6 space-y-4">
-                     <Button asChild className="w-full bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold">
+                     <Button asChild className="w-full bg-brand-teal hover:bg-cyan-400 text-brand-blue font-bold">
                       <Link to="/quote" onClick={() => setIsOpen(false)}>Get a Free Quote</Link>
                     </Button>
                     <Button asChild variant="outline" className="w-full">

@@ -35,19 +35,21 @@ export function HomePage() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="bg-brand-light dark:bg-brand-blue py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-brand-light dark:bg-brand-blue py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-brand-teal/5 rounded-full blur-3xl" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.h1 {...fadeIn} className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-serif text-brand-blue dark:text-white leading-tight">
-            From Draft to Publication – <br /> We’re With You Every Step of the Way.
+            From Draft to Publication – <br /> 
+            <span className="text-brand-teal">We’re With You Every Step.</span>
           </motion.h1>
           <motion.p {...fadeIn} transition={{ delay: 0.2 }} className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Elevating Academic Excellence Through Expert Writing & Publishing Support.
+            Elevating Academic Excellence Through Unique <span className="text-brand-gold font-bold">Expert</span> Writing & Publishing Support.
           </motion.p>
-          <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="mt-10 flex justify-center gap-4">
-            <Button asChild size="lg" className="bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-6 py-3 md:px-8 md:py-4">
+          <motion.div {...fadeIn} transition={{ delay: 0.4 }} className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            <Button asChild size="lg" className="bg-brand-teal hover:bg-cyan-400 text-brand-blue font-bold text-lg px-10 py-6 shadow-glow transition-all hover:scale-105">
               <Link to="/quote">Get a Free Quote</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-base px-6 py-3 md:px-8 md:py-4">
+            <Button asChild size="lg" variant="outline" className="text-lg px-10 py-6 border-brand-teal/30 hover:border-brand-teal">
               <Link to="/services">Explore Services</Link>
             </Button>
           </motion.div>
@@ -58,14 +60,14 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Our Core Services</h2>
-            <p className="mt-4 text-muted-foreground">Comprehensive support for your academic journey.</p>
+            <div className="w-20 h-1 bg-brand-teal mx-auto mt-4" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div {...fadeIn}>
-              <Card className="text-center h-full">
+              <Card className="text-center h-full hover:shadow-soft transition-shadow border-brand-teal/5">
                 <CardHeader>
-                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
-                    <Book className="h-8 w-8 text-brand-gold" />
+                  <div className="mx-auto bg-brand-teal/10 p-4 rounded-full w-fit">
+                    <Book className="h-8 w-8 text-brand-teal" />
                   </div>
                   <CardTitle className="mt-4 font-serif">Research Paper Writing</CardTitle>
                 </CardHeader>
@@ -75,10 +77,10 @@ export function HomePage() {
               </Card>
             </motion.div>
             <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
-              <Card className="text-center h-full">
+              <Card className="text-center h-full hover:shadow-soft transition-shadow border-brand-teal/5">
                 <CardHeader>
-                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
-                    <Edit3 className="h-8 w-8 text-brand-gold" />
+                  <div className="mx-auto bg-brand-teal/10 p-4 rounded-full w-fit">
+                    <Edit3 className="h-8 w-8 text-brand-teal" />
                   </div>
                   <CardTitle className="mt-4 font-serif">Thesis & Dissertation Editing</CardTitle>
                 </CardHeader>
@@ -88,10 +90,10 @@ export function HomePage() {
               </Card>
             </motion.div>
             <motion.div {...fadeIn} transition={{ delay: 0.4 }}>
-              <Card className="text-center h-full">
+              <Card className="text-center h-full hover:shadow-soft transition-shadow border-brand-teal/5">
                 <CardHeader>
-                  <div className="mx-auto bg-brand-gold/10 p-4 rounded-full w-fit">
-                    <Send className="h-8 w-8 text-brand-gold" />
+                  <div className="mx-auto bg-brand-teal/10 p-4 rounded-full w-fit">
+                    <Send className="h-8 w-8 text-brand-teal" />
                   </div>
                   <CardTitle className="mt-4 font-serif">Journal Submission Support</CardTitle>
                 </CardHeader>
@@ -104,22 +106,21 @@ export function HomePage() {
         </div>
       </section>
       {/* Why Choose Us? */}
-      <section className="py-16 md:py-24 bg-brand-light dark:bg-brand-blue">
+      <section className="py-16 md:py-24 bg-brand-light dark:bg-brand-blue border-y border-brand-teal/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Why Choose AcademiaPlus?</h2>
-            <p className="mt-4 text-muted-foreground">Your trusted partner for academic success.</p>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Why AcademiaPlus?</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               "PhD-Level Subject Experts",
-              "100% Confidential & Plagiarism-Free",
+              "100% Confidential & Secure",
               "On-Time Delivery Guaranteed",
               "Published in Q1 Journals",
             ].map((item, index) => (
               <motion.div key={item} {...fadeIn} transition={{ delay: index * 0.1 }}>
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-brand-gold mt-1 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-brand-teal mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-lg text-brand-blue dark:text-white">{item}</h3>
                   </div>
@@ -133,22 +134,22 @@ export function HomePage() {
       <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">What Our Clients Say</h2>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-brand-blue dark:text-white">Voices of Excellence</h2>
           </div>
           <Carousel opts={{ loop: true }} className="max-w-4xl mx-auto">
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <Card className="border-none shadow-none">
+                  <Card className="border-none shadow-none bg-transparent">
                     <CardContent className="text-center p-8">
-                      <Quote className="h-8 w-8 text-brand-gold/50 mx-auto mb-4" />
+                      <Quote className="h-8 w-8 text-brand-teal/30 mx-auto mb-4" />
                       <p className="text-lg italic text-muted-foreground">"{testimonial.text}"</p>
                       <div className="mt-6 flex items-center justify-center space-x-3">
-                        <Avatar>
+                        <Avatar className="h-12 w-12 border-2 border-brand-teal/20">
                           <AvatarImage src={testimonial.avatar} />
-                          <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                          <AvatarFallback className="bg-brand-blue text-brand-teal">{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                         </Avatar>
-                        <div>
+                        <div className="text-left">
                           <p className="font-semibold text-brand-blue dark:text-white">{testimonial.name}</p>
                           <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                         </div>
@@ -158,17 +159,18 @@ export function HomePage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="text-brand-teal border-brand-teal/30" />
+            <CarouselNext className="text-brand-teal border-brand-teal/30" />
           </Carousel>
         </div>
       </section>
       {/* Final CTA */}
-      <section className="py-20 md:py-32 bg-brand-blue text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 md:py-32 bg-brand-blue text-white relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-blue to-transparent opacity-50" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold font-serif">Ready to Publish with Confidence?</h2>
           <p className="mt-4 max-w-2xl mx-auto text-gray-300">Let our experts help you achieve your academic goals. Get a personalized quote today.</p>
-          <Button asChild size="lg" className="mt-8 bg-brand-gold hover:bg-yellow-500 text-brand-blue font-bold text-base px-8 py-6">
+          <Button asChild size="lg" className="mt-8 bg-brand-teal hover:bg-cyan-400 text-brand-blue font-bold text-lg px-12 py-7 transition-all hover:scale-105 shadow-glow">
             <Link to="/quote">Start Today</Link>
           </Button>
         </div>
